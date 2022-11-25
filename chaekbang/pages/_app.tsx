@@ -1,6 +1,15 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import wrapper from "../src/store/configureStore";
+import type { AppProps } from "next/app";
+import GlobalStyle from "../styles/globalStyle";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+export function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </>
+  );
 }
+
+// export default wrapper.withRedux(App);
+export default App;
