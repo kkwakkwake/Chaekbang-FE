@@ -13,6 +13,8 @@ const GlobalStyle = () => {
 
         body {
           font-family: "noto sans";
+          max-width: 720px;
+          margin: 0 auto;
         }
       `}
     />
