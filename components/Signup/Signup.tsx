@@ -1,10 +1,18 @@
-import { emotionTest } from "./styled";
+import { useState } from "react";
+import { EmotionTest } from "./styled";
 
 const Signup = () => {
+  const [changeColor, setChangeColor] = useState<string>("");
+
+  const change = () => {
+    setChangeColor("blue");
+  };
+
   return (
     <>
       <div>image</div>
-      <div css={emotionTest}>div</div>
+      <button onClick={change}>change</button>
+      <EmotionTest color={changeColor}>emotion test</EmotionTest>
       <form>
         <div>
           <label>이름</label>

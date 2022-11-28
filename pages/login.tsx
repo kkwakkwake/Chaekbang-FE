@@ -10,7 +10,9 @@ const LoginPage = () => {
       </Head>
 
       <AppLayout>
-        <Login />
+        <div>
+          <Login />
+        </div>
       </AppLayout>
     </>
   );

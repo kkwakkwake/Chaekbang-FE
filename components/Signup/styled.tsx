@@ -1,8 +1,7 @@
-/** @jsxImportSource @emotion/react */
-import { css, jsx } from "@emotion/react";
+import styled from "@emotion/styled";
 
-export const emotionTest = css`
+export const EmotionTest = styled.div`
   width: 700px;
   margin: 0 auto;
-  background-color: yellow;
+  background-color: ${(props) => (props.color ? props.color : "black")};
 `;
