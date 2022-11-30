@@ -1,28 +1,45 @@
-import { emotionTest } from "./styled";
+import { useState } from 'react';
+import {
+  SignupWrapper,
+  SignupImageWrapper,
+  FormWrapper,
+  NameInputWrapper,
+  EmailInputWrapper,
+  PasswordInputWrapper,
+  TermsWrapper,
+  SignupButton,
+} from './styled';
 
 const Signup = () => {
+  // const [changeColor, setChangeColor] = useState<string>("");
+
+  // const change = () => {
+  //   setChangeColor("blue");
+  // };
+
   return (
-    <>
-      <div>image</div>
-      <div css={emotionTest}>div</div>
-      <form>
-        <div>
+    <SignupWrapper>
+      <SignupImageWrapper>image</SignupImageWrapper>
+      {/* <button onClick={change}>change</button>
+      <EmotionTest color={changeColor}>emotion test</EmotionTest> */}
+      <FormWrapper>
+        <NameInputWrapper>
           <label>이름</label>
           <input type="text" />
-        </div>
-        <div>
+        </NameInputWrapper>
+        <EmailInputWrapper>
           <label>이메일</label>
-          <input type="text" />
-        </div>
-        <div>
+          <input type="email" />
+        </EmailInputWrapper>
+        <PasswordInputWrapper>
           <label>비밀번호</label>
           <input type="password" />
-        </div>
-        <div>
+        </PasswordInputWrapper>
+        <PasswordInputWrapper>
           <label>비밀번호 확인</label>
           <input type="password" />
-        </div>
-        <div id="terms-conditions">
+        </PasswordInputWrapper>
+        <TermsWrapper>
           <label>
             <input type="checkbox" name="checkAll" />
             모든 약관에 동의
@@ -35,10 +52,10 @@ const Signup = () => {
             <input type="checkbox" name="check2" />
             이용 약관에 동의 (필수)
           </label>
-          <button>회원가입</button>
-        </div>
-      </form>
-    </>
+          <SignupButton>회원가입</SignupButton>
+        </TermsWrapper>
+      </FormWrapper>
+    </SignupWrapper>
   );
 };
 
