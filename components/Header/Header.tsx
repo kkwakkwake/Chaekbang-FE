@@ -1,8 +1,10 @@
+import { HeaderWrapper } from './styled';
+
 const Header = () => {
   return (
-    <>
-      <div>HEADER AREA</div>
-    </>
+    <HeaderWrapper>
+      <div>책방</div>
+    </HeaderWrapper>
   );
 };
 
