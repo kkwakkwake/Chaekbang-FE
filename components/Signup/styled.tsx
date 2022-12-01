@@ -34,6 +34,7 @@ export const SignupWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
+  padding-bottom: 100px;
 `;
 
 export const SignupImageWrapper = styled.div`

@@ -1,8 +1,14 @@
+import { BottomNavWrapper, BottomNavContainer } from './styled';
+
 const BottomNav = () => {
   return (
-    <>
-      <div>BOTTOM NAV AREA</div>
-    </>
+    <BottomNavWrapper>
+      <BottomNavContainer>
+        <div>HOME</div>
+        <div>+</div>
+        <div>MYPAGE</div>
+      </BottomNavContainer>
+    </BottomNavWrapper>
   );
 };
 

@@ -1,5 +1,5 @@
-import { css, Global } from "@emotion/react";
-import reset from "emotion-reset";
+import { css, Global } from '@emotion/react';
+import reset from 'emotion-reset';
 
 const GlobalStyle = () => {
   return (
@@ -12,7 +12,7 @@ const GlobalStyle = () => {
         }
 
         body {
-          font-family: "noto sans";
+          font-family: 'noto sans';
           max-width: 720px;
           margin: 0 auto;
         }
