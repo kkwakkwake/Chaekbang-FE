@@ -1,8 +1,11 @@
+import { FormWrapper } from '../Signup/styled';
+import { LoginWrapper, LoginImageWrapper } from './styled';
+
 const Login = () => {
   return (
-    <>
-      <div>image</div>
-      <form>
+    <LoginWrapper>
+      <LoginImageWrapper>image</LoginImageWrapper>
+      <FormWrapper>
         <div>
           <label>이메일</label>
           <input type="text" />
@@ -12,8 +15,8 @@ const Login = () => {
           <input type="password" />
         </div>
         <button>로그인</button>
-      </form>
-    </>
+      </FormWrapper>
+    </LoginWrapper>
   );
 };
 
