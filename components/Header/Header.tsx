@@ -1,9 +1,11 @@
-import { HeaderWrapper } from './styled';
+import { HeaderWrapper, HeaderContainer } from './styled';
 
 const Header = () => {
   return (
     <HeaderWrapper>
-      <div>책방</div>
+      <HeaderContainer>
+        <div>책방</div>
+      </HeaderContainer>
     </HeaderWrapper>
   );
 };

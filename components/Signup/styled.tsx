@@ -29,11 +29,16 @@ export const InputWrapper = styled.div`
   }
 `;
 
+export const FormWrapper = styled.form`
+  width: 300px;
+  margin-top: 40px;
+`;
+
 export const SignupWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 80px;
   padding-bottom: 100px;
 `;
 
@@ -43,14 +48,33 @@ export const SignupImageWrapper = styled.div`
   background-color: #ddd;
 `;
 
-export const FormWrapper = styled.div`
-  width: 300px;
-  margin-top: 40px;
-`;
-
 export const NameInputWrapper = styled(InputWrapper)``;
-export const EmailInputWrapper = styled(InputWrapper)``;
-export const PasswordInputWrapper = styled(InputWrapper)``;
+export const EmailInputWrapper = styled(InputWrapper)`
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  span {
+    font-size: 0.8rem;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 7px 10px;
+    cursor: pointer;
+    background-color: ${Colors.beige};
+  }
+`;
+export const PasswordInputWrapper = styled(InputWrapper)`
+  position: relative;
+  span {
+    font-size: 0.7rem;
+    position: absolute;
+    right: 0;
+    bottom: -20px;
+    color: red;
+  }
+`;
 
 export const TermsWrapper = styled.div`
   display: flex;
@@ -59,7 +83,7 @@ export const TermsWrapper = styled.div`
   label {
     margin-bottom: 15px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   input:checked {
