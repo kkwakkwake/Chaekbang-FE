@@ -5,6 +5,8 @@ export const HeaderWrapper = styled.div`
   width: 100%;
   height: 60px;
   position: fixed;
+  left: 0;
+  top: 0;
 `;
 
 export const HeaderContainer = styled.div`
@@ -12,9 +14,6 @@ export const HeaderContainer = styled.div`
   margin: 0 auto;
   height: 60px;
   background-color: ${Colors.beige};
-
-  left: 0;
-  top: 0;
   div {
     height: 60px;
     line-height: 60px;

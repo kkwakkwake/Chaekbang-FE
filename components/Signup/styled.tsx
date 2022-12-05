@@ -7,6 +7,21 @@ import { Colors } from '../../styles/ColorVariable';
 //   background-color: ${(props) => (props.color ? props.color : 'black')};
 // `;
 
+export const Button = styled.button`
+  width: 100%;
+  border: none;
+  padding: 10px 0;
+  border-radius: 10px;
+  background-color: ${Colors.beige};
+  opacity: 0.8;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
 export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,8 +53,7 @@ export const SignupWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 80px;
-  padding-bottom: 100px;
+  padding: 100px 0;
 `;
 
 export const SignupImageWrapper = styled.div`
@@ -49,6 +63,7 @@ export const SignupImageWrapper = styled.div`
 `;
 
 export const NameInputWrapper = styled(InputWrapper)``;
+
 export const EmailInputWrapper = styled(InputWrapper)`
   div {
     display: flex;
@@ -63,6 +78,11 @@ export const EmailInputWrapper = styled(InputWrapper)`
     padding: 7px 10px;
     cursor: pointer;
     background-color: ${Colors.beige};
+    opacity: 0.8;
+    transition: all 0.2s;
+    &:hover {
+      opacity: 1;
+    }
   }
 `;
 export const PasswordInputWrapper = styled(InputWrapper)`
@@ -90,10 +110,5 @@ export const TermsWrapper = styled.div`
     accent-color: ${Colors.green};
   }
 `;
-export const SignupButton = styled.button`
-  border: none;
-  padding: 10px 0;
-  border-radius: 10px;
-  background-color: ${Colors.beige};
-  cursor: pointer;
-`;
+
+export const SignupButton = styled(Button)``;
