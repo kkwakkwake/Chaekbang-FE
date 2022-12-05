@@ -10,6 +10,13 @@ import {
   SignupButton,
 } from './styled';
 
+/*
+  이름 유효성검사
+  비밀번호 유효성검사
+  이메일 유효성검사
+  이메일 중복확인
+*/
+
 const Signup = () => {
   // const [changeColor, setChangeColor] = useState<string>('');
 
@@ -17,22 +24,33 @@ const Signup = () => {
   //   setChangeColor('blue');
   // };
 
+  const [nameInput, setNameInput] = useState<string>('');
+  const [emailInput, setEmailInput] = useState<string>('');
   const [pwInput, setPwInput] = useState<string>('');
   const [pwCheckInput, setPwCheckInput] = useState<string>('');
-  const [isPwMatch, setIsPwMatch] = useState<boolean>(false);
+  const [isPwMatch, setIsPwMatch] = useState<boolean>(true);
 
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
   const pwRef = useRef<HTMLInputElement>(null);
-  const pwCheckRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (pwInput && pwCheckInput) {
+      pwInput === pwCheckInput ? setIsPwMatch(true) : setIsPwMatch(false);
+    }
+  }, [pwInput, pwCheckInput]);
 
   const signupSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (pwInput === pwCheckInput) {
-      setIsPwMatch(false);
-      if (isCheckedAll) {
-        console.log('회원가입');
-      }
-    } else {
-      setIsPwMatch(true);
+    if (isPwMatch && isCheckedAll) {
+      console.log(
+        '회원가입',
+        nameInput,
+        emailInput,
+        pwInput,
+        pwCheckInput,
+        isPwMatch,
+      );
     }
   };
 
@@ -48,29 +66,15 @@ const Signup = () => {
     }
   }, [isCheckedOne, isCheckedTwo]);
 
-  const checkedAllHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setIsCheckedOne(true);
-      setIsCheckedTwo(true);
-    } else {
-      setIsCheckedOne(false);
-      setIsCheckedTwo(false);
-    }
-  };
-
-  const checkedOneHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setIsCheckedOne(true);
-    } else {
-      setIsCheckedOne(false);
-    }
-  };
-
-  const checkedTwoHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setIsCheckedTwo(true);
-    } else {
-      setIsCheckedTwo(false);
+  const checkboxHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.name === 'checkAll') {
+      setIsCheckedAll(e.target.checked);
+      setIsCheckedOne(e.target.checked);
+      setIsCheckedTwo(e.target.checked);
+    } else if (e.target.name === 'check1') {
+      setIsCheckedOne(e.target.checked);
+    } else if ((e.target.name = 'check2')) {
+      setIsCheckedTwo(e.target.checked);
     }
   };
 
@@ -82,14 +86,26 @@ const Signup = () => {
       <FormWrapper onSubmit={signupSubmit}>
         <NameInputWrapper>
           <label>이름</label>
-          <input type="text" required />
+          <input
+            type="text"
+            ref={nameRef}
+            value={nameInput}
+            onChange={(e) => setNameInput(e.target.value)}
+            required
+          />
         </NameInputWrapper>
         <EmailInputWrapper>
           <div>
             <label>이메일</label>
             <span>중복확인</span>
           </div>
-          <input type="email" required />
+          <input
+            type="email"
+            ref={emailRef}
+            value={emailInput}
+            onChange={(e) => setEmailInput(e.target.value)}
+            required
+          />
         </EmailInputWrapper>
         <PasswordInputWrapper>
           <label>비밀번호</label>
@@ -106,12 +122,11 @@ const Signup = () => {
           <label>비밀번호 확인</label>
           <input
             type="password"
-            ref={pwCheckRef}
             value={pwCheckInput}
             onChange={(e) => setPwCheckInput(e.target.value)}
             required
           />
-          {isPwMatch && <span>비밀번호가 일치하지 않습니다</span>}
+          {isPwMatch || <span>비밀번호가 일치하지 않습니다</span>}
         </PasswordInputWrapper>
         <TermsWrapper>
           <label>
@@ -119,7 +134,7 @@ const Signup = () => {
               type="checkbox"
               name="checkAll"
               checked={isCheckedAll}
-              onChange={checkedAllHandler}
+              onChange={checkboxHandler}
             />
             약관 전체동의
           </label>
@@ -128,7 +143,7 @@ const Signup = () => {
               type="checkbox"
               checked={isCheckedOne}
               name="check1"
-              onChange={checkedOneHandler}
+              onChange={checkboxHandler}
             />
             이용약관 동의(필수)
           </label>
@@ -137,7 +152,7 @@ const Signup = () => {
               type="checkbox"
               checked={isCheckedTwo}
               name="check2"
-              onChange={checkedTwoHandler}
+              onChange={checkboxHandler}
             />
             개인정보 수집 및 이용동의(필수)
           </label>

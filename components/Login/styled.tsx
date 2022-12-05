@@ -1,16 +1,21 @@
 import styled from '@emotion/styled';
 import { Colors } from '../../styles/ColorVariable';
-import { InputWrapper } from '../Signup/styled';
+import { InputWrapper, Button } from '../Signup/styled';
 
 export const LoginWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 80px;
-  padding-bottom: 100px;
+  padding: 100px 0;
 `;
 export const LoginImageWrapper = styled.div`
   width: 100px;
   height: 100px;
   background-color: #ddd;
+`;
+
+export const EmailInputWrapper = styled(InputWrapper)``;
+export const PasswordInputWrapper = styled(InputWrapper)``;
+export const LoginButton = styled(Button)`
+  margin-top: 20px;
 `;
