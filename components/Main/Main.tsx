@@ -1,17 +1,6 @@
-import PostItem from './PostItem';
+import BookItem from '../BookItem';
 import { MainWrapper } from './styled';
-
-export interface DummyItem {
-  id: string;
-  user: {
-    image?: string;
-    name: string;
-  };
-  post: {
-    image?: string;
-    title: string;
-  };
-}
+import { DummyItem } from '../../src/ts/interfaces';
 
 const dummy: DummyItem[] = [
   {
@@ -20,6 +9,7 @@ const dummy: DummyItem[] = [
       name: 'user1',
     },
     post: {
+      image: 'https://source.unsplash.com/random',
       title: '책 제목 영역입니다.',
     },
   },
@@ -47,6 +37,7 @@ const dummy: DummyItem[] = [
       name: 'user4',
     },
     post: {
+      image: 'https://source.unsplash.com/random',
       title: '책 제목 영역입니다.',
     },
   },
@@ -56,6 +47,7 @@ const dummy: DummyItem[] = [
       name: 'user5',
     },
     post: {
+      image: 'https://source.unsplash.com/random',
       title: '책 제목 영역입니다.',
     },
   },
@@ -92,6 +84,7 @@ const dummy: DummyItem[] = [
       name: 'user9',
     },
     post: {
+      image: 'https://source.unsplash.com/random',
       title: '책 제목 영역입니다.',
     },
   },
@@ -110,7 +103,7 @@ const Main = () => {
   return (
     <MainWrapper>
       {dummy.map((item) => (
-        <PostItem key={item.id} item={item} />
+        <BookItem key={item.id} item={item} />
       ))}
     </MainWrapper>
   );
