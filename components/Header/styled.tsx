@@ -7,6 +7,7 @@ export const HeaderWrapper = styled.div`
   position: fixed;
   left: 0;
   top: 0;
+  z-index: 99;
 `;
 
 export const HeaderContainer = styled.div`

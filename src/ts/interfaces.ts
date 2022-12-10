@@ -7,5 +7,6 @@ export interface DummyItem {
   post: {
     image?: string;
     title: string;
+    dueDate?: string;
   };
 }

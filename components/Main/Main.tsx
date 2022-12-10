@@ -1,6 +1,7 @@
 import BookItem from '../BookItem';
 import { MainWrapper } from './styled';
 import { DummyItem } from '../../src/ts/interfaces';
+import BookList from '../BookList';
 
 const dummy: DummyItem[] = [
   {
@@ -102,9 +103,7 @@ const dummy: DummyItem[] = [
 const Main = () => {
   return (
     <MainWrapper>
-      {dummy.map((item) => (
-        <BookItem key={item.id} item={item} />
-      ))}
+      <BookList dummy={dummy} />
     </MainWrapper>
   );
 };

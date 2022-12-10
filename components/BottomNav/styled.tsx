@@ -7,6 +7,7 @@ export const BottomNavWrapper = styled.div`
   position: fixed;
   left: 0;
   bottom: 0;
+  z-index: 99;
 `;
 export const BottomNavContainer = styled.div`
   max-width: 720px;
