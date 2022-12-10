@@ -1,4 +1,10 @@
-import { BookItemWrapper, UserView, BookImage, BookTitle } from './Main/styled';
+import {
+  BookItemWrapper,
+  UserView,
+  BookInfo,
+  BookImage,
+  BookTitle,
+} from './styled';
 import { DummyItem } from '../src/ts/interfaces';
 
 interface ItemProps {
@@ -15,10 +21,12 @@ const BookItem = ({ item }: ItemProps) => {
         </div>
         <p>{item.user.name}</p>
       </UserView>
-      <BookImage>
-        {item.post.image && <img src={item.post.image} alt="책 이미지" />}
-      </BookImage>
-      <BookTitle>{item.post.title}</BookTitle>
+      <BookInfo>
+        <BookImage>
+          {item.post.image && <img src={item.post.image} alt="책 이미지" />}
+        </BookImage>
+        <BookTitle>{item.post.title.slice(0, 30)}</BookTitle>
+      </BookInfo>
     </BookItemWrapper>
   );
 };
