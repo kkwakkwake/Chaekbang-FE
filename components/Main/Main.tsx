@@ -10,7 +10,7 @@ const dummy: DummyItem[] = [
     },
     post: {
       image: 'https://source.unsplash.com/random',
-      title: '책 제목 영역입니다.',
+      title: '책 제목 영역입니다.책 제목 영역입니다.책 제목 영역입니다.',
     },
   },
   {
