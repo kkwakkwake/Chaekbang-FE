@@ -14,6 +14,10 @@ const GlobalStyle = () => {
           box-sizing: border-box;
           font-family: inherit;
         }
+        a {
+          text-decoration: none;
+          color: #000;
+        }
         body {
           font-family: 'Noto Sans KR', sans-serif;
           max-width: 720px;

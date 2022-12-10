@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 import { Colors } from '../styles/ColorVariable';
 
-export const MainWrapper = styled.div`
+export const BookListWrapper = styled.div`
   width: 100%;
-  padding: 90px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   /* grid-auto-rows: 280px; */
@@ -62,4 +61,9 @@ export const BookImage = styled.div`
 
 export const BookTitle = styled.p`
   margin-top: 10px;
+`;
+
+export const DueDate = styled.p`
+  margin-top: 7px;
+  font-size: 0.8rem;
 `;
