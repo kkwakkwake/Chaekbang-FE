@@ -17,7 +17,7 @@ const BottomNav = () => {
           </Link>
         </GoToMainpage>
         <New>
-          <Link href="/">
+          <Link href="/search">
             <img src="../../img/plus_circle.png" alt="추가하기" />
           </Link>
         </New>
