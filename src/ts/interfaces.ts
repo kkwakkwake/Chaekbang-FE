@@ -9,4 +9,6 @@ export interface DummyItem {
     title: string;
     dueDate?: string;
   };
+  borrow?: string;
+  lend?: string;
 }

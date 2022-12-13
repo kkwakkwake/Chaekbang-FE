@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { FormWrapper } from '../Signup/styled';
+import { FormWrapper } from '../styled';
 import {
   LoginWrapper,
   LoginImageWrapper,

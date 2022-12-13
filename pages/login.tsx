@@ -1,6 +1,6 @@
-import Head from "next/head";
-import AppLayout from "../components/AppLayout";
-import Login from "../components/Login/Login";
+import Head from 'next/head';
+import AppLayout from '../components/AppLayout';
+import Login from '../components/Login/Login';
 
 const LoginPage = () => {
   return (
@@ -8,11 +8,8 @@ const LoginPage = () => {
       <Head>
         <title>로그인 | 책방</title>
       </Head>
-
       <AppLayout>
-        <div>
-          <Login />
-        </div>
+        <Login />
       </AppLayout>
     </>
   );

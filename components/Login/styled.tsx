@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { Colors } from '../../styles/ColorVariable';
-import { InputWrapper, Button } from '../Signup/styled';
+import { InputWrapper, Button } from '../styled';
 
-export const LoginWrapper = styled.div`
+export const LoginWrapper = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;

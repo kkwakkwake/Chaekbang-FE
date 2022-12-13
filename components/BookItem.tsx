@@ -5,6 +5,7 @@ import {
   BookImage,
   BookTitle,
   DueDate,
+  Status,
 } from './styled';
 import { DummyItem } from '../src/ts/interfaces';
 
@@ -16,7 +17,7 @@ interface ItemProps {
 const BookItem = ({ item }: ItemProps) => {
   return (
     <BookItemWrapper>
-      {item.user && (
+      {!item.lend && item.user && (
         <UserView>
           <div>
             {item.user.image && (
@@ -26,6 +27,12 @@ const BookItem = ({ item }: ItemProps) => {
           <p>{item.user.name}</p>
         </UserView>
       )}
+      {item.lend &&
+        (item.lend == 'waiting' ? (
+          <Status>빌려주기</Status>
+        ) : (
+          <Status>반납됨</Status>
+        ))}
       <BookInfo>
         <BookImage>
           {item.post.image && <img src={item.post.image} alt="책 이미지" />}
