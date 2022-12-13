@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BOOKSEARH } from '../../src/store/api/kakao';
 import ResultItem from './ResultItem';
 import ResultList from './ResultList';
-import { SearchInput, SearchResultWrapper } from './styled';
+import { ResultMessage, SearchInput, SearchResultWrapper } from './styled';
 
 interface Parameter {
   query: string;
@@ -12,11 +12,12 @@ interface Parameter {
 }
 
 interface ResultDummy {
-  authors: [];
+  authors: string[];
   contents: string;
   datetime: string;
   isbn: string;
   price: number;
+  publisher: string;
   sales_prcie: number;
   thumbnail: string;
   title: string;
@@ -35,7 +36,7 @@ const SearchResult = () => {
       query,
       sort: 'accuracy',
       page: 1,
-      size: 15,
+      size: 20,
     };
 
     const { data } = await BOOKSEARH(params);
@@ -48,13 +49,15 @@ const SearchResult = () => {
     }
   };
 
-  console.log(resultList);
+  //console.log(resultList);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      requestSearching();
+    if (e.key === 'Enter' && query !== '') {
+      return requestSearching();
+    } else {
+      setResultList([]);
+      setNoResult(true);
     }
-    return;
   };
 
   return (
@@ -67,12 +70,16 @@ const SearchResult = () => {
           onKeyDown={handleKeyDown}
         />
       </SearchInput>
-      <div>
-        {/* {resultList.length > 0 &&
-          <ResultList dummy={resultList}/>} */}
-        {resultList.length > 0 &&
-          resultList.map((item) => <ResultItem key={item.isbn} item={item} />)}
-      </div>
+
+      {resultList.length > 0 ? (
+        <ResultList dummy={resultList} />
+      ) : (
+        noResult && (
+          <ResultMessage>찾고 싶은 책 제목을 입력해주세요!</ResultMessage>
+        )
+      )}
+      {/* {resultList.length > 0 &&
+          resultList.map((item) => <ResultItem key={item.isbn} item={item} />)} */}
     </SearchResultWrapper>
   );
 };
