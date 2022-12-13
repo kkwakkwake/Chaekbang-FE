@@ -2,13 +2,14 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   SignupWrapper,
   SignupImageWrapper,
-  FormWrapper,
   NameInputWrapper,
   EmailInputWrapper,
   PasswordInputWrapper,
   TermsWrapper,
   SignupButton,
 } from './styled';
+
+import { FormWrapper } from '../styled';
 
 /*
   이름 유효성검사
@@ -18,12 +19,6 @@ import {
 */
 
 const Signup = () => {
-  // const [changeColor, setChangeColor] = useState<string>('');
-
-  // const change = () => {
-  //   setChangeColor('blue');
-  // };
-
   const [nameInput, setNameInput] = useState<string>('');
   const [emailInput, setEmailInput] = useState<string>('');
   const [pwInput, setPwInput] = useState<string>('');
@@ -81,8 +76,6 @@ const Signup = () => {
   return (
     <SignupWrapper>
       <SignupImageWrapper>image</SignupImageWrapper>
-      {/* <button onClick={change}>change</button>
-      <EmotionTest color={changeColor}>emotion test</EmotionTest> */}
       <FormWrapper onSubmit={signupSubmit}>
         <NameInputWrapper>
           <label>이름</label>

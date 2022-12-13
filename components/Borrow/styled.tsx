@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Colors } from '../../styles/ColorVariable';
 
-export const BorrowWrapper = styled.div`
+export const BorrowWrapper = styled.main`
   width: 100%;
   padding: 100px 0;
 

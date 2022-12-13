@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
-export const ProfileWrapper = styled.div`
-  width: 100%;
+export const ProfileWrapper = styled.main`
+  /* width: 100%; */
   padding: 100px 0;
 
   h1 {

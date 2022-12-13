@@ -229,7 +229,7 @@ const Borrow = () => {
     setDummy(dummy1);
   };
 
-  const handleOngoint = () => {
+  const handleOngoing = () => {
     setTabMenu('ongoing');
     setDummy(dummy2);
   };
@@ -241,7 +241,7 @@ const Borrow = () => {
         <Approved onClick={handleApproved} tabMenu={tabMenu}>
           승인완료
         </Approved>
-        <Ongoing onClick={handleOngoint} tabMenu={tabMenu}>
+        <Ongoing onClick={handleOngoing} tabMenu={tabMenu}>
           진행중
         </Ongoing>
       </TabWrapper>
