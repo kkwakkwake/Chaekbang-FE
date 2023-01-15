@@ -10,6 +10,30 @@ export const NewPostWrapper = styled.div`
   align-items: center;
 `;
 
+export const BorrowStatusWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 45px;
+`;
+
+export const OnwerInfo = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  & > div {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #ddd;
+  }
+`;
+
+export const BookInfo = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 50px;
+`;
+
 export const NewPostTitle = styled.p`
   font-size: 1.3rem;
   font-weight: 700;
