@@ -7,27 +7,39 @@ import {
   PasswordInputWrapper,
   TermsWrapper,
   SignupButton,
+  InvalidMessage,
 } from './styled';
 
 import { FormWrapper } from '../styled';
-
-/*
-  이름 유효성검사
-  비밀번호 유효성검사
-  이메일 유효성검사
-  이메일 중복확인
-*/
 
 const Signup = () => {
   const [nameInput, setNameInput] = useState<string>('');
   const [emailInput, setEmailInput] = useState<string>('');
   const [pwInput, setPwInput] = useState<string>('');
   const [pwCheckInput, setPwCheckInput] = useState<string>('');
+
   const [isPwMatch, setIsPwMatch] = useState<boolean>(true);
+  const [isName, setIsName] = useState<boolean>(false);
+  const [isEmail, setIsEmail] = useState<boolean>(false);
+
+  const [emailChecked, setEmailChecked] = useState<boolean>(false);
+  const [emailInvalid, setEmailInvalid] = useState<boolean>(false);
 
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const pwRef = useRef<HTMLInputElement>(null);
+
+  const InvalidMessages = {
+    name: '2-6글자 한글로 입력해주세요',
+    email: {
+      isEmail: '유효하지 않은 이메일 형식입니다',
+      emailInvalid: {
+        true: '사용할 수 없는 이메일입니다',
+        false: '사용 가능한 이메일입니다',
+      },
+    },
+    pw: '비밀번호가 일치하지 않습니다',
+  };
 
   useEffect(() => {
     if (pwInput && pwCheckInput) {
@@ -35,8 +47,46 @@ const Signup = () => {
     }
   }, [pwInput, pwCheckInput]);
 
+  /** 이름 유효성 검사 */
+  const checkName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const nameRegex = /^[가-힣]{2,6}$/;
+    setNameInput(e.target.value);
+    setIsName(nameRegex.test(e.target.value));
+  };
+
+  /** 이메일 유효성 검사 */
+  const checkEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const emailRegex =
+      /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    setEmailInput(e.target.value);
+    setEmailChecked(false);
+    setIsEmail(emailRegex.test(e.target.value));
+  };
+
+  const checkEmailValid = () => {
+    if (!emailInput || !isEmail) {
+      return emailRef.current?.focus();
+    }
+    if (emailInput === 'hi@hi.com') {
+      setEmailChecked(true);
+      setEmailInvalid(true);
+    } else {
+      setEmailChecked(true);
+      setEmailInvalid(false);
+    }
+  };
+
   const signupSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!isName) {
+      return nameRef.current?.focus();
+    }
+    if (!isEmail) {
+      return emailRef.current?.focus();
+    } else {
+    }
+
     if (isPwMatch && isCheckedAll) {
       console.log(
         '회원가입',
@@ -49,6 +99,7 @@ const Signup = () => {
     }
   };
 
+  /** 약관 유효성 검사 */
   const [isCheckedAll, setIsCheckedAll] = useState<boolean>(false);
   const [isCheckedOne, setIsCheckedOne] = useState<boolean>(false);
   const [isCheckedTwo, setIsCheckedTwo] = useState<boolean>(false);
@@ -83,22 +134,44 @@ const Signup = () => {
             type="text"
             ref={nameRef}
             value={nameInput}
-            onChange={(e) => setNameInput(e.target.value)}
+            onChange={checkName}
+            placeholder="2글자 이상 6글자 이하"
             required
           />
+          {nameInput
+            ? isName || <InvalidMessage>{InvalidMessages.name}</InvalidMessage>
+            : null}
         </NameInputWrapper>
         <EmailInputWrapper>
           <div>
             <label>이메일</label>
-            <span>중복확인</span>
+            <button onClick={checkEmailValid}>중복확인</button>
           </div>
           <input
-            type="email"
+            type="text"
             ref={emailRef}
             value={emailInput}
-            onChange={(e) => setEmailInput(e.target.value)}
+            onChange={checkEmail}
             required
           />
+          {emailChecked ? (
+            emailInvalid ? (
+              <InvalidMessage>
+                {InvalidMessages.email.emailInvalid.true}
+              </InvalidMessage>
+            ) : (
+              <InvalidMessage>
+                {InvalidMessages.email.emailInvalid.false}
+              </InvalidMessage>
+            )
+          ) : null}
+          {emailChecked
+            ? null
+            : emailInput
+            ? isEmail || (
+                <InvalidMessage>{InvalidMessages.email.isEmail}</InvalidMessage>
+              )
+            : null}
         </EmailInputWrapper>
         <PasswordInputWrapper>
           <label>비밀번호</label>
@@ -119,7 +192,7 @@ const Signup = () => {
             onChange={(e) => setPwCheckInput(e.target.value)}
             required
           />
-          {isPwMatch || <span>비밀번호가 일치하지 않습니다</span>}
+          {isPwMatch || <InvalidMessage>{InvalidMessages.pw}</InvalidMessage>}
         </PasswordInputWrapper>
         <TermsWrapper>
           <label>

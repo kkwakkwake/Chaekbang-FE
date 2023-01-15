@@ -15,20 +15,24 @@ export const SignupImageWrapper = styled.div`
   background-color: #ddd;
 `;
 
-export const NameInputWrapper = styled(InputWrapper)``;
+export const NameInputWrapper = styled(InputWrapper)`
+  position: relative;
+`;
 
 export const EmailInputWrapper = styled(InputWrapper)`
+  position: relative;
   div {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
-  span {
+  button {
     font-size: 0.8rem;
+    border: none;
     border-radius: 10px;
     margin-bottom: 10px;
-    padding: 7px 10px;
+    padding: 5px 10px;
     cursor: pointer;
     background-color: ${Colors.beige};
     opacity: 0.8;
@@ -40,13 +44,6 @@ export const EmailInputWrapper = styled(InputWrapper)`
 `;
 export const PasswordInputWrapper = styled(InputWrapper)`
   position: relative;
-  span {
-    font-size: 0.7rem;
-    position: absolute;
-    right: 0;
-    bottom: -20px;
-    color: red;
-  }
 `;
 
 export const TermsWrapper = styled.div`
@@ -65,3 +62,11 @@ export const TermsWrapper = styled.div`
 `;
 
 export const SignupButton = styled(Button)``;
+
+export const InvalidMessage = styled.span`
+  font-size: 0.7rem;
+  position: absolute;
+  right: 0;
+  bottom: -20px;
+  color: red;
+`;

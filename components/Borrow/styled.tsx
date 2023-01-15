@@ -15,12 +15,25 @@ export const BorrowWrapper = styled.main`
 
 export const TabWrapper = styled.div`
   margin: 0 auto;
-  height: 42px;
+  height: 45px;
   line-height: 42px;
-  border-radius: 15px;
+  border-radius: 20px;
   display: flex;
   margin: 40px 10px;
   background-color: #ddd;
+  position: relative;
+`;
+
+export const TabEffect = styled.div<{ tabMenu: string }>`
+  height: 100%;
+  width: 50%;
+  background-color: ${Colors.green};
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  left: ${(props) => (props.tabMenu == 'approved' ? '0' : '50%')};
+  transition: all 0.6s;
+  z-index: 1;
 `;
 
 export const Approved = styled.div<{ tabMenu: string }>`
@@ -29,10 +42,10 @@ export const Approved = styled.div<{ tabMenu: string }>`
   border-radius: 15px;
   font-size: 1rem;
   font-weight: 500;
-  background-color: ${(props) =>
-    props.tabMenu == 'approved' ? Colors.green : 'none'};
+  transition: all 0.6s;
   color: ${(props) => (props.tabMenu == 'approved' ? '#fff' : '#666')};
   cursor: pointer;
+  z-index: 2;
 `;
 export const Ongoing = styled.div<{ tabMenu: string }>`
   width: 50%;
@@ -41,9 +54,9 @@ export const Ongoing = styled.div<{ tabMenu: string }>`
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  background-color: ${(props) =>
-    props.tabMenu == 'ongoing' ? Colors.green : 'none'};
+  transition: all 0.6s;
   color: ${(props) => (props.tabMenu == 'ongoing' ? '#fff' : '#666')};
+  z-index: 2;
 `;
 
 export const BorrowListWrapper = styled.div`
