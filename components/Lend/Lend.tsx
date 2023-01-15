@@ -1,4 +1,4 @@
-import { LendWrapper, TabWrapper, Waiting, Lent } from './styled';
+import { LendWrapper, TabWrapper, Waiting, Lent, TabEffect } from './styled';
 import BookList from '../BookList';
 import { DummyItem } from '../../src/ts/interfaces';
 import { useEffect, useState } from 'react';
@@ -219,6 +219,7 @@ const Lend = () => {
         <Lent onClick={handleLent} tabMenu={tabMenu}>
           대여 중
         </Lent>
+        <TabEffect tabMenu={tabMenu}></TabEffect>
       </TabWrapper>
       {dummy && <BookList dummy={dummy} />}
     </LendWrapper>

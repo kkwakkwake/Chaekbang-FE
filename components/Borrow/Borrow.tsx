@@ -1,4 +1,10 @@
-import { BorrowWrapper, TabWrapper, Approved, Ongoing } from './styled';
+import {
+  BorrowWrapper,
+  TabWrapper,
+  Approved,
+  Ongoing,
+  TabEffect,
+} from './styled';
 import BookList from '../BookList';
 import { DummyItem } from '../../src/ts/interfaces';
 import { useEffect, useState } from 'react';
@@ -244,6 +250,7 @@ const Borrow = () => {
         <Ongoing onClick={handleOngoing} tabMenu={tabMenu}>
           진행중
         </Ongoing>
+        <TabEffect tabMenu={tabMenu}></TabEffect>
       </TabWrapper>
       {dummy && <BookList dummy={dummy} />}
     </BorrowWrapper>

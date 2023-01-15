@@ -21,6 +21,19 @@ export const TabWrapper = styled.div`
   display: flex;
   margin: 40px 10px;
   background-color: #ddd;
+  position: relative;
+`;
+
+export const TabEffect = styled.div<{ tabMenu: string }>`
+  height: 100%;
+  width: 50%;
+  background-color: ${Colors.green};
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  left: ${(props) => (props.tabMenu == 'waiting' ? '0' : '50%')};
+  transition: all 0.6s;
+  z-index: 1;
 `;
 
 export const Waiting = styled.div<{ tabMenu: string }>`
@@ -29,10 +42,10 @@ export const Waiting = styled.div<{ tabMenu: string }>`
   border-radius: 15px;
   font-size: 1rem;
   font-weight: 500;
-  background-color: ${(props) =>
-    props.tabMenu == 'waiting' ? Colors.green : 'none'};
+  transition: all 0.6s;
   color: ${(props) => (props.tabMenu == 'waiting' ? '#fff' : '#666')};
   cursor: pointer;
+  z-index: 2;
 `;
 export const Lent = styled.div<{ tabMenu: string }>`
   width: 50%;
@@ -40,8 +53,8 @@ export const Lent = styled.div<{ tabMenu: string }>`
   border-radius: 15px;
   font-size: 1rem;
   font-weight: 500;
-  cursor: pointer;
-  background-color: ${(props) =>
-    props.tabMenu == 'lent' ? Colors.green : 'none'};
+  transition: all 0.6s;
   color: ${(props) => (props.tabMenu == 'lent' ? '#fff' : '#666')};
+  cursor: pointer;
+  z-index: 2;
 `;
