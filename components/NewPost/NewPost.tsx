@@ -1,24 +1,29 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
+import { userActions } from '../../src/store/reducers';
 import { ItemImg } from '../SearchResult/styled';
-import { NewBtn, NewPostContent, NewPostTitle, NewPostWrapper } from './styled';
+import {
+  BookInfo,
+  BorrowStatusWrapper,
+  NewBtn,
+  NewPostContent,
+  NewPostTitle,
+  NewPostWrapper,
+  OnwerInfo,
+} from './styled';
 
 type Data = {
   authors: string[];
   contents: string;
-  datetime: string;
-  isbn: string;
-  price: number;
+  datetime?: string;
+  isbn?: string;
+  price?: number;
   publisher: string;
-  sales_prcie: number;
+  sales_prcie?: number;
   thumbnail: string;
   title: string;
   translators?: [];
-  url: string;
-};
-
-type NewData = {
-  item: Data;
+  url?: string;
 };
 
 interface NewBook {
@@ -33,8 +38,14 @@ interface NewBook {
   };
 }
 
-const NewPost = ({ item }: NewData) => {
+type NewData = {
+  item: Data;
+  status: boolean;
+};
+
+const NewPost = ({ item, status }: NewData) => {
   console.log(item);
+  console.log(status);
   const { authors, contents, title, thumbnail, publisher } = item;
   const [newBook, setNewBook] = useState<NewBook>();
 
@@ -59,10 +70,38 @@ const NewPost = ({ item }: NewData) => {
      */
   };
 
+  const borrowNewBook = () => {
+    /** 기존에 존재하는 책 빌리기 로직
+     * 성공하면 /로 이동
+     *
+     */
+  };
+
   return (
     <NewPostWrapper>
-      <NewPostTitle>{title}</NewPostTitle>
-      <ItemImg thumbnail={thumbnail}></ItemImg>
+      {status ? (
+        <BorrowStatusWrapper>
+          <OnwerInfo>
+            <div></div>
+            <span>{item.user.name}</span>
+          </OnwerInfo>
+          <BookInfo>
+            <ItemImg thumbnail={thumbnail}></ItemImg>
+            <div>
+              <NewPostTitle>{title}</NewPostTitle>
+              <input type="date" />
+            </div>
+          </BookInfo>
+        </BorrowStatusWrapper>
+      ) : (
+        <div>
+          <NewPostTitle>{title}</NewPostTitle>
+          <ItemImg thumbnail={thumbnail}></ItemImg>
+        </div>
+      )}
+
+      {/* <NewPostTitle>{title}</NewPostTitle>
+      <ItemImg thumbnail={thumbnail}></ItemImg> */}
       <NewPostContent>
         <p>책 소개</p>
         {contents.length > 180 ? (
@@ -83,8 +122,12 @@ const NewPost = ({ item }: NewData) => {
         <p>출판사</p>
         <p>{publisher}</p>
       </NewPostContent>
-
-      <NewBtn onClick={addNewBook}>추가</NewBtn>
+      {status ? (
+        <NewBtn onClick={borrowNewBook}>신청</NewBtn>
+      ) : (
+        <NewBtn onClick={addNewBook}>추가</NewBtn>
+      )}
+      {/* <NewBtn onClick={addNewBook}>추가</NewBtn> */}
     </NewPostWrapper>
   );
 };

@@ -28,7 +28,7 @@ const Profile = () => {
           </Link>
         </GotoLend>
         <GotoBooks>
-          <Link href="/">내 책장</Link>
+          <Link href="/myrepository">내 책장</Link>
         </GotoBooks>
         <Logout>
           <span>로그아웃</span>
